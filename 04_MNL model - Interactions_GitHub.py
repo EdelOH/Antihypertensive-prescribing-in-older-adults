@@ -1,8 +1,7 @@
 """File 
-:author: John Rose, ITLS
-:Copied by Edel
-:date: July 2023
-:data: wobel_pilot.csv
+:author:
+:date:
+:data:
 """
 
 ## Import libraries necessary for model estimation
@@ -13,8 +12,8 @@ from biogeme import models
 from biogeme.expressions import Beta, Variable, log, exp
 
 ## Read the data
-df = pd.read_csv('WOBEL_20240624_V3.csv')
-database = db.Database('WOBEL_20240624_V3', df)
+df = pd.read_csv('DCE_data.csv')
+database = db.Database('DCE_data', df)
 
 ## Read the names in the first row of data as variables
 globals().update(database.variables)
@@ -85,7 +84,7 @@ prob = models.logit(utility,availability,choice)
 
 ## Create the Biogeme object
 biogemeObject = bio.BIOGEME(database, log(prob))
-biogemeObject.modelName = 'MNL_wobel -Socios_2'
+biogemeObject.modelName = 'MNL_interactions'
 
 ## Estimate the parameters
 results = biogemeObject.estimate()
@@ -93,3 +92,4 @@ results = biogemeObject.estimate()
 ## Print the results
 pandasResults = results.getEstimatedParameters(onlyRobust=False)
 print(pandasResults)
+
