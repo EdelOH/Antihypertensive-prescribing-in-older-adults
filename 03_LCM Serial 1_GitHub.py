@@ -1,7 +1,7 @@
 """File 
-:author: John Rose, ITLS
-:date: May 2023
-:data: MurrayD.txt
+:author: 
+:date: 
+:data: 
 """
 
 ## Import libraries necessary for model estimation
@@ -12,8 +12,8 @@ from biogeme import models
 from biogeme.expressions import Beta, Variable, PanelLikelihoodTrajectory, log, exp
 
 ## Read the data
-df = pd.read_csv('DCE_Data20250310.csv')
-database = db.Database('DCE_Data20250310.csv', df)
+df = pd.read_csv('DCE_Data.csv')
+database = db.Database('DCE_Data.csv', df)
 
 ## Read the names in the first row of data as variables
 globals().update(database.variables)
@@ -126,3 +126,4 @@ results = biogemeObject.estimate()
 ## Print the results
 pandasResults = results.getEstimatedParameters(onlyRobust=False)
 print(pandasResults)
+
